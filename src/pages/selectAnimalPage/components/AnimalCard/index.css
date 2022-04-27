@@ -1,0 +1,23 @@
+.animal-card {
+    position: relative;
+    width: 315px;
+}
+
+.card-hover {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    transform: translate(-50%, 0);
+    height: 100%;
+    background-color: #444444;
+    opacity: 0.7;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.animal-card:hover .card-hover {
+    display: flex;
+}

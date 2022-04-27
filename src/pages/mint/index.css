@@ -1,0 +1,20 @@
+.main {
+
+}
+
+.header {
+    height: 60px;
+}
+
+.header-logo {
+    height: 80%;
+    width: 10%;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.mint-button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
