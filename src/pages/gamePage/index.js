@@ -44,6 +44,9 @@ export default function GamePage() {
 
     const setAttrs = (attrs) => {
         setFoodCount(attrs.food)
+        if (exp === 40 && attrs.experience === 50) {
+            alert('Aha! Your Lion has been upgraded to LVL 2! Congrats!')
+        }
         setExp(attrs.experience)
     }
 
@@ -61,6 +64,7 @@ export default function GamePage() {
     }
 
     const buyFood = async () => {
+        setIsLoading(true)
         const contractFoodCount = await window.contract.buy_food(
             {
                 token_id: window.accountId + "-lion-animal",
@@ -68,10 +72,11 @@ export default function GamePage() {
             300000000000000, // attached GAS (optional)
             utils.format.parseNearAmount(foodInput || "1")
         );
+        setIsLoading(false)
         setFoodCount(contractFoodCount)
     }
 
-    const level = exp > 50 ? 2 : 1
+    const level = exp >= 50 ? 2 : 1
 
     return (
         <PageWrapper isLoading={isLoading}>
@@ -115,8 +120,8 @@ export default function GamePage() {
                 </div>
             </div>
             <div className="instruction">
-                <p>1. Buy food (you can select count of food in donation) all money goes to Ukraine, Kharkiv's zoo</p>
-                <p>2. Feed your lion, get experience of NFT</p>
+                <p>1. Buy food (you can select the count of food in donation) all money goes to Ukraine, Kharkiv's zoo</p>
+                <p>2. Feed your lion, get the experience of NFT</p>
                 <p>3. When you will up 50 experience you will be able to claim Top Supporter NFT</p>
                 <p>4. Buy more food just to support Ukrainian zoos</p>
             </div>

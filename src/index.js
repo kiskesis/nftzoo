@@ -3,9 +3,8 @@ import './global.css'
 import {initContract} from "./utils/utils";
 import { render } from "react-dom";
 import {
-    BrowserRouter,
     Routes,
-    Route,
+    Route, HashRouter,
 } from "react-router-dom";
 import SelectAnimalPage from "./pages/selectAnimalPage";
 import Mint from "./pages/mint";
@@ -15,14 +14,14 @@ import GamePage from "./pages/gamePage";
 window.nearInitPromise = initContract()
   .then(() => {
     render(
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/select-animal" element={<SelectAnimalPage />} />
                 <Route path="/mint" element={<Mint />} />
                 <Route path="/game/lion" element={<GamePage />} />
             </Routes>
-        </BrowserRouter>,
+        </HashRouter>,
       document.querySelector('#root')
     )
   })
