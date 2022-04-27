@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/nftzoo/static/css/main.900dff5f.chunk.css",
-    "main.js": "/nftzoo/static/js/main.d9aef2b3.chunk.js",
-    "main.js.map": "/nftzoo/static/js/main.d9aef2b3.chunk.js.map",
+    "main.css": "/nftzoo/static/css/main.e6b7cef3.chunk.css",
+    "main.js": "/nftzoo/static/js/main.b9946540.chunk.js",
+    "main.js.map": "/nftzoo/static/js/main.b9946540.chunk.js.map",
     "runtime-main.js": "/nftzoo/static/js/runtime-main.1b120f44.js",
     "runtime-main.js.map": "/nftzoo/static/js/runtime-main.1b120f44.js.map",
     "static/js/2.0d81de39.chunk.js": "/nftzoo/static/js/2.0d81de39.chunk.js",
     "static/js/2.0d81de39.chunk.js.map": "/nftzoo/static/js/2.0d81de39.chunk.js.map",
     "index.html": "/nftzoo/index.html",
-    "static/css/main.900dff5f.chunk.css.map": "/nftzoo/static/css/main.900dff5f.chunk.css.map",
+    "static/css/main.e6b7cef3.chunk.css.map": "/nftzoo/static/css/main.e6b7cef3.chunk.css.map",
     "static/js/2.0d81de39.chunk.js.LICENSE.txt": "/nftzoo/static/js/2.0d81de39.chunk.js.LICENSE.txt",
     "static/media/Fifth.9748a025.svg": "/nftzoo/static/media/Fifth.9748a025.svg",
     "static/media/First.12b11c06.svg": "/nftzoo/static/media/First.12b11c06.svg",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.1b120f44.js",
     "static/js/2.0d81de39.chunk.js",
-    "static/css/main.900dff5f.chunk.css",
-    "static/js/main.d9aef2b3.chunk.js"
+    "static/css/main.e6b7cef3.chunk.css",
+    "static/js/main.b9946540.chunk.js"
   ]
 }
