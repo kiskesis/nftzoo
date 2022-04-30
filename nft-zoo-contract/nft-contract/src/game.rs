@@ -4,7 +4,7 @@ use crate::*;
 impl Contract {
     #[payable]
     pub fn feed_lion(&mut self) -> CardAttr {
-        let token_id: TokenId = self.get_lion_token_id();
+        let token_id: TokenId = self.get_token_id(&ZooAnimal::Lion);
 
         let card_attr = self.card_attr.get(&token_id).unwrap();
         assert!(
@@ -21,9 +21,9 @@ impl Contract {
         return new_card_attributes
     }
 
-    pub fn check_token(&self) -> bool {
+    pub fn check_token(&self, token_type: &ZooAnimal) -> bool {
         let account_id = env::signer_account_id();
-        let token_id: TokenId = self.get_lion_token_id();
+        let token_id: TokenId = self.get_token_id(&token_type);
 
         return match self.tokens_per_owner.get(&account_id) {
             Some(tokens_per_owner) => tokens_per_owner.contains(&token_id),
@@ -31,14 +31,14 @@ impl Contract {
         }
     }
 
-    pub fn get_lion_token_id(&self) -> TokenId {
-        let account_id = env::signer_account_id();
-        return [&account_id.to_string(), "-lion-animal"].concat();
-    }
+    // pub fn get_lion_token_id(&self) -> TokenId {
+    //     let account_id = env::signer_account_id();
+    //     return [&account_id.to_string(), "-lion-animal"].concat();
+    // }
 
     pub fn get_attributes(&self) -> Option<CardAttr> {
-        let have_token = self.check_token();
-        let token_id: TokenId = self.get_lion_token_id();
+        let have_token = self.check_token(&ZooAnimal::Lion);
+        let token_id: TokenId = self.get_token_id(&ZooAnimal::Lion);
 
         assert!(
             have_token,
@@ -52,9 +52,9 @@ impl Contract {
     pub fn buy_food(
         &mut self
     ) {
-        let token_id: TokenId = self.get_lion_token_id();
+        let token_id: TokenId = self.get_token_id(&ZooAnimal::Lion);
         let food_deposit = env::attached_deposit();
-        let have_token = self.check_token();
+        let have_token = self.check_token(&ZooAnimal::Lion);
 
         assert!(
             have_token,

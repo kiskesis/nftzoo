@@ -11,7 +11,6 @@ import Fifth from '../../assets/Fifth.svg'
 
 export default function Food({ eatingTimes }) {
     const [img, setImg] = useState(FullFood)
-    console.log('eatingTimes', eatingTimes);
 
     useEffect(() => {
         switch (eatingTimes) {

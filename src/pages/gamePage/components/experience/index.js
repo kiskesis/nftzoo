@@ -5,7 +5,6 @@ import {useInterval} from "../../../../utils/hooks";
 import {useState} from "react";
 
 export default function Experience({ exp }) {
-    console.log('exp', exp);
     const maxPercentages = exp / (50 / 100)
     const [percentages, setPercentages] = useState(0)
 
@@ -14,7 +13,6 @@ export default function Experience({ exp }) {
             setPercentages(percentages + 2)
         }
     },percentages < maxPercentages ? 500 : null)
-    console.log('percentages', percentages);
     return (
         <div className="experience">
             <img src={LoadingBorders} className="loading-borders" alt="loading borders" />

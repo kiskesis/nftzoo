@@ -35,6 +35,18 @@ pub const NFT_STANDARD_NAME: &str = "nep171";
 #[serde(crate = "near_sdk::serde")]
 pub enum ZooAnimal {
     Lion,
+    LionGold,
+}
+
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
+#[serde(crate = "near_sdk::serde")]
+pub struct NewTokenData {
+    pub token_id: TokenId,
+    pub animal_type: ZooAnimal,
+    pub media: String,
+    pub title: String,
+    pub description: String,
+    pub copies: u64
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]

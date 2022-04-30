@@ -22,7 +22,9 @@ export default function Login() {
 
     const checkToken = async () => {
         setIsLoading(true)
-        const hasToken = await window.contract.check_token();
+        const hasToken = await window.contract.check_token({
+            token_type: "Lion"
+        });
         setIsLoading(false)
         navigate(hasToken ? "/select-animal" : "/mint")
     }

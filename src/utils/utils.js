@@ -15,7 +15,6 @@ export async function initContract() {
   // Getting the Account ID. If still unauthorized, it's just empty string
   window.accountId = window.walletConnection.getAccountId()
   window.account = window.walletConnection.account()
-  console.log('window.accountId', window.accountId);
 
   // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
@@ -28,8 +27,6 @@ export async function initContract() {
 
 export function logout() {
   window.walletConnection.signOut()
-  // reload page
-  window.location.replace(window.location.origin + '/')
 }
 
 export async function login() {

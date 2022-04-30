@@ -20,7 +20,9 @@ export default function Mint() {
     useEffect(() => {
         const receivedNFT = async () => {
             setIsLoading(true)
-            const hasToken = await window.contract.check_token()
+            const hasToken = await window.contract.check_token({
+                token_type: "Lion"
+            })
             setIsLoading(false)
             if (window.accountId !== "") {
                 setUserHasNFT(
@@ -32,7 +34,6 @@ export default function Mint() {
     }, []);
 
     const mintNFT = async () => {
-        console.log('window.accountId', window.accountId);
         await window.contract.nft_mint(
             {
                 receiver_id: window.accountId,

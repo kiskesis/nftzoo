@@ -7,6 +7,7 @@ import {useInterval} from "../../utils/hooks";
 import Food from "./components/food";
 import { utils } from "near-api-js";
 import Experience from "./components/experience";
+import MintModal from "./components/mintModal";
 
 export default function GamePage() {
     const [isLoading, setIsLoading] = useState(true)
@@ -16,6 +17,7 @@ export default function GamePage() {
     const [userBalance, setUserBalance] = useState(0)
     const [foodCount, setFoodCount] = useState(0)
     const [exp, setExp] = useState(0)
+    const [hasVipToken, setHasVipToken] = useState(true)
 
     useEffect(() => {
         const getUserBalance = async () => {
@@ -27,13 +29,21 @@ export default function GamePage() {
             setAttrs(card_attr)
             setIsLoading(false)
         }
+        const checkVipToken = async () => {
+            const hasToken = await window.contract.check_token({
+                token_type: "LionGold"
+            });
+            console.log('hasToken', hasToken);
+            setHasVipToken(hasToken)
+        }
         getUserBalance()
         getAttributes()
+        checkVipToken()
     }, [])
 
     useEffect(() => {
         if (eatingTimes === 11) {
-            // setFoodCount(foodCount - 1)F
+            // setFoodCount(foodCount - 1)
         }
     }, [eatingTimes])
 
@@ -125,6 +135,7 @@ export default function GamePage() {
                 <p>3. When you will up 50 experience you will be able to claim Top Supporter NFT</p>
                 <p>4. Buy more food just to support Ukrainian zoos</p>
             </div>
+            {exp >= 50 && !hasVipToken && <MintModal />}
         </PageWrapper>
     )
 }

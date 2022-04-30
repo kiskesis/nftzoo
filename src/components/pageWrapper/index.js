@@ -12,7 +12,9 @@ export default function PageWrapper({ children, isLoading }) {
     const { pathname } = useLocation();
     useEffect(() => {
         const checkToken = async () => {
-            const hasToken = await window.contract.check_token();
+            const hasToken = await window.contract.check_token({
+                token_type: "Lion"
+            });
             if (!hasToken && pathname !== "/mint") {
                 navigate("/mint")
             }
@@ -28,6 +30,11 @@ export default function PageWrapper({ children, isLoading }) {
         }
     }, [])
 
+    const handleLogout = () => {
+        logout()
+        navigate("/")
+    }
+
     return (
         <div className="page-wrapper">
             <header className="header">
@@ -36,13 +43,16 @@ export default function PageWrapper({ children, isLoading }) {
                     src={SupportUkraine}
                     alt=""
                 />
-                <button
-                    className="link"
-                    style={{float: 'right', height: '100%'}}
-                    onClick={logout}
-                >
-                    Sign out
-                </button>
+                <div className="header-profile-div">
+                    <div>{window.accountId}</div>
+                    <button
+                        className="link"
+                        style={{float: 'right', height: '100%'}}
+                        onClick={handleLogout}
+                    >
+                        Sign out
+                    </button>
+                </div>
             </header>
             {children}
             {isLoading && <Loading />}
