@@ -24,6 +24,7 @@ function getConfig(env) {
       walletUrl: 'https://wallet.testnet.near.org',
       helperUrl: 'https://helper.testnet.near.org',
       explorerUrl: 'https://explorer.testnet.near.org',
+      headers: { 'x-api-key': API_KEY },
     }
   case 'betanet':
     return {
