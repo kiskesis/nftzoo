@@ -22,9 +22,6 @@ export default function PageWrapper({ children, isLoading }) {
             if (hasToken && pathname === "/mint") {
                 navigate("/select-animal")
             }
-
-            const state = await window.account.state()
-            console.log('state', state);
         }
         if (window.walletConnection.isSignedIn()) {
             checkToken()
